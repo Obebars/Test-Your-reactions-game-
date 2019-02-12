@@ -1,0 +1,17 @@
+
+
+    #shape-container{
+
+          width: auto;
+          height: 800px;
+          margin:0;
+          padding: 0;
+          }
+
+    #shape{
+          position: relative;
+          width: 100px;
+          height: 100px;
+          background-color: #000;
+          display: none;
+        }

@@ -1,0 +1,118 @@
+<html>
+
+	<head>
+    	<title>Javascript Practice</title>
+
+			<style type="text/css">
+
+				#shape-container{
+
+					width: auto;
+					height: 800px;
+					margin:0;
+					padding: 0;
+				}
+
+				#shape{
+					position: relative;
+					width: 100px;
+					height: 100px;
+					background-color: #000;
+					display: none;
+				}
+
+			</style>
+
+  </head>
+
+  <body>
+
+    <h1> Test your reactions!</h1>
+
+    <h2> Click on the boxes and circles as quickly as you can! </h2>
+
+    <h3> Your Time : <span id="time-container"> </span> </h3>
+		<h3> Best Time: <span id="besttime-container"> </span> </h3>
+
+		<div id="shape-container">
+
+			<div id="shape"> </div>
+
+		</div>
+
+
+    <script type="text/javascript">
+
+				var start = new Date().getTime();
+				var bestTime = start;
+
+				function makeShapeAppear(){
+
+						document.getElementById("shape").style.display =  "block";
+						start = new Date().getTime();
+				}
+
+				function appearAfterDelay(){
+
+						setTimeout(makeShapeAppear, Math.random() * 3000);
+				}
+
+
+				function getRandomColor() {
+
+  						var letters = '0123456789ABCDEF';
+  						var color = '#';
+  						for (var i = 0; i < 6; i++) {
+    					color += letters[Math.floor(Math.random() * 16)];
+  						}
+  						return color;
+					}
+
+					appearAfterDelay();
+
+				document.getElementById("shape").onclick = function() {
+
+					var shape = document.getElementById("shape");
+
+						shape.style.display = "none";
+
+					var positionAndSize = [Math.random() * 400 , Math.floor(Math.random() * 200) + 100];
+
+						shape.style.top = positionAndSize[0] + "px";
+
+						shape.style.left = positionAndSize[0] + "px";
+
+						shape.style.width = positionAndSize[1] + "px";
+
+						shape.style.height = positionAndSize[1] + "px";
+
+						shape.style.backgroundColor = getRandomColor();
+
+					if (Math.random() > 0.5){
+
+						shape.style.borderRadius = "50%";
+				} else{
+						shape.style.borderRadius = "0";
+								}
+
+					var end = new Date().getTime();
+					var timeTaken = (end - start)/1000;
+
+					if (bestTime > timeTaken){
+
+						bestTime=timeTaken;
+					}
+
+						document.getElementById("time-container").innerHTML = timeTaken + " s";
+						document.getElementById("besttime-container").innerHTML = bestTime + " s";
+
+						appearAfterDelay();
+
+			}
+
+
+    </script>
+
+    </body>
+
+</html>
